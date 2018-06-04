@@ -33,38 +33,42 @@
               routerLinkActive="active"
               class="nav-link">Categories</a>
           </li>
-          <li class="nav-item ml-0 ml-md-auto"
-            ngbDropdown #dropdown="ngbDropdown">
-            <a class="nav-link dropdown-toggle" ngbDropdownToggle>
+
+          <li class="nav-item ml-0 ml-md-auto" ngbDropdown #dropdown="ngbDropdown">
+              <a class="nav-link dropdown-toggle-split" ngbDropdownToggle>
               <i class="fas fa-user mr-1"></i>
               <span *ngIf="!token"> Accounts</span>
-            </a>
-            <div ngbDropdowMenu class="dropdown-menu">
-              <a *ngIf="token" 
-                (click)="closeDropdown(dropdown);collapse();"
-                routerLink="/profile"
-                class="dropdown-item">
-                <i class="fa fa-user-circle" aria-hidden="true"></i> Profile
+              <span *ngIf="data.user">{{ data.user.name }}</span>
               </a>
-              <a *ngIf="!token" 
-                (click)="closeDropdown(dropdown);collapse();"
-                routerLink="/login"
-                class="dropdown-item">
-                <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Login
-              </a>
-              <a *ngIf="token" 
-                (click)="closeDropdown(dropdown);collapse();logout();"
-                class="dropdown-item">
-                <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
-              </a>
-              <a *ngIf="!token" 
-                (click)="closeDropdown(dropdown);collapse();"
-                routerLink="/register"
-                class="dropdown-item">
-                <i class="fas fa-user-plus" aria-hidden="true"></i> Register
-              </a>
-            </div>
-          </li>
+              <div class="dropdown-menu" ngbDropdownMenu>
+                <a *ngIf="token" 
+                  (click)="closeDropdown(dropdown);collapse();"
+                  routerLink="/profile"
+                  class="dropdown-item">
+                  <i class="fa fa-user-circle" aria-hidden="true"></i> Profile
+                </a>
+                <a *ngIf="!token" 
+                  (click)="closeDropdown(dropdown);collapse();"
+                  routerLink="/login"
+                  class="dropdown-item">
+                  <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Login
+                </a>
+                <a *ngIf="token" 
+                  (click)="closeDropdown(dropdown);collapse();logout();"
+                  class="dropdown-item">
+                  <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
+                </a>
+                <a *ngIf="!token" 
+                  (click)="closeDropdown(dropdown);collapse();"
+                  routerLink="/register"
+                  class="dropdown-item">
+                  <i class="fas fa-user-plus" aria-hidden="true"></i> Register
+                </a>
+              </div>
+            </li>
+                
+               
+          
           <li class="nav-item ml-0 ml-md-2">
             <a (click)="collapse()"
               routerLink="/cart"
@@ -78,7 +82,6 @@
     </div>
   </div>
 </nav>
-
 
 <router-outlet></router-outlet>
 
